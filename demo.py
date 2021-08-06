@@ -13,7 +13,7 @@ def path_to_image(path):
     tensor = tensor.unsqueeze(0)
     return img, tensor
 
-image_path = '/Users/apple/Downloads/VisualNav/pytorch-grad-cam/demo_images/both.png'
+image_path = '/Users/apple/Downloads/VisualNav/cvmlp-p4/demo_images/both.png'
 image, image_tensor = path_to_image(image_path); # image.show()
 print(image_tensor.shape)
 image_array = np.asarray(image)/255

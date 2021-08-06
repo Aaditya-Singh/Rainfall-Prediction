@@ -1,0 +1,13 @@
+build
+dist
+*.egg-info
+**/*.pyc
+
+*__pycache__/
+*.DS_Store
+.vscode
+demo.py
+demo_images/
+imagenet/val_images/
+imagenet/val_labels/
+imagenet/*.xml
