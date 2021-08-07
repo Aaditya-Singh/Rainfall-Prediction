@@ -2,7 +2,7 @@ import xmltodict
 import pandas as pd
 import cv2
 
-path = open('/Users/apple/Downloads/VisualNav/cvmlp-p4/imagenet/ILSVRC2012_val_00000003.xml', 'r')
+path = open('/Users/apple/Downloads/VisualNav/cvmlp-p4/imagenet/dog.xml', 'r')
 xml = path.read(); # print(xml)
 dictionary = xmltodict.parse(xml)
 synset = dictionary['annotation']['object']['name']; box = {}
@@ -18,6 +18,6 @@ for i in range(len(df)): synset_to_id[df.iloc[i, 0]] = df.iloc[i, 1]
 ids = synset_to_id[synset]
 print(ids)
 
-image = cv2.imread('/Users/apple/Downloads/VisualNav/cvmlp-p4/demo_images/ILSVRC2012_val_00000003.JPEG')
+image = cv2.imread('/Users/apple/Downloads/VisualNav/cvmlp-p4/demo_images/dog.jpg')
 cv2.rectangle(image, (box['xmin'], box['ymin']), (box['xmax'], box['ymax']), color=(0, 255, 0), thickness=2)
 cv2.imshow("bounded", image); cv2.waitKey(0)

@@ -18,7 +18,7 @@ image, image_tensor = image_from_path(image_path); # image.show()
 print("Image shape: {}".format(image_tensor.shape))
 image_array = np.asarray(image)/255
 
-################################################ OBTAIN HEATMAP #################################################
+################################################ OBTAIN HEATMAP ################################################
 model = resnet50(pretrained=True)
 layer = model.layer4[-1]
 
@@ -34,3 +34,13 @@ grayscale_cam, [x, y] = image_to_heatmap(image_tensor, model, layer, 230)
 heatmap_array = show_cam_on_image(image_array, grayscale_cam, use_rgb=True)
 heatmap_image = Image.fromarray(heatmap_array); heatmap_image.show()
 print("Maximum intensity point: {}, {}".format(x, y))
+
+################################################ POINTING GAME #################################################
+def hit_or_miss(x_map, y_map, bnd_box, threshold=0):
+    x_min = bnd_box['xmin']; y_min = bnd_box['ymin']; x_max = bnd_box['xmax']; y_max = bnd_box['ymax']
+    if (x_map < x_min - threshold) or (x_map > x_max + threshold): return False 
+    elif (y_map < y_min - threshold) or (y_map > y_max + threshold): return False
+    return True
+
+box = {'xmin': 38, 'ymin': 19, 'xmax': 385, 'ymax': 373}
+is_hit = hit_or_miss(x, y, box, 15); print("Hit: {}".format(is_hit))
