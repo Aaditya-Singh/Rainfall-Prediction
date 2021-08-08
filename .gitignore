@@ -9,3 +9,6 @@ dist
 imagenet/val_images/
 imagenet/val_labels/
 imagenet/*.xml
+pascalvoc/test_images/
+pascalvoc/test_labels/
+pascalvoc/*.xml
