@@ -6,7 +6,7 @@ dist
 *__pycache__/
 *.DS_Store
 .vscode
-imagenet/val_images/
-imagenet/val_labels/
-pascalvoc/test_images/
-pascalvoc/test_labels/
+imagenet/images/
+imagenet/labels/
+pascalvoc/images/
+pascalvoc/labels/
