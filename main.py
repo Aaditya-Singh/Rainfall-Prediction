@@ -1,5 +1,6 @@
 #################################################### IMPORT ####################################################
 import os
+from tqdm import tqdm
 import numpy as np
 import pandas as pd
 from PIL import Image
@@ -19,8 +20,8 @@ def pointing_game(dataset_path):
     for i in range(len(df)): category_dict[df.iloc[i, 0]] = df.iloc[i, 1]
     ######################################### ITERATE OVER IMAGES ##############################################
     hits = 0; misses = 0
-    # for i in range(len(list_of_images)):
-    for i in range(10):
+    # for i in tqdm(range(len(list_of_images))):
+    for i in tqdm(range(100)):
         image_path = path_to_images + list_of_images[i]
         image, image_tensor = image_from_path(image_path); image_array = np.asarray(image)/255
         xml_path = path_to_labels + list_of_labels[i]
@@ -42,5 +43,4 @@ def pointing_game(dataset_path):
 
 # path = '/Users/apple/Downloads/VisualNav/cvmlp-p4/pascalvoc/'
 path = '/Users/apple/Downloads/VisualNav/cvmlp-p4/imagenet/'
-
 pointing_acc = pointing_game(path); print("Accuracy: {}".format(pointing_acc))
